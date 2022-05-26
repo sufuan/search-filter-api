@@ -2,6 +2,9 @@ import express from "express";
 const app = express();
 import { Users } from "./users.js";
 import cors from "cors";
+require('dotenv').config()
+const port = process.env.PORT || 4000
+
 
 app.use(cors());
 
@@ -22,4 +25,4 @@ app.get("/", (req, res) => {
   q ? res.json(search(Users).slice(0, 10)) : res.json(Users.slice(0, 10));
 });
 
-app.listen(5000, () => console.log("API is working!"));
+app.listen(port, () => console.log("API is working!"));
